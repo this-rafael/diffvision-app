@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DiffVision</title>
+    <meta
+      name="description"
+      content="Premium local-first Git diff review for real repositories."
+    />
+    <script>
+      (function () {
+        var validThemes = [
+          "dark",
+          "dracula",
+          "lust",
+          "one-light",
+          "min-light",
+          "papercolor-light",
+        ];
+
+        try {
+          var storedTheme = window.localStorage.getItem("diffvision:theme");
+          var theme =
+            validThemes.indexOf(storedTheme) >= 0 ? storedTheme : "dark";
+          var mode =
+            theme === "one-light" ||
+            theme === "min-light" ||
+            theme === "papercolor-light"
+              ? "light"
+              : "dark";
+
+          document.documentElement.dataset.theme = theme;
+          document.documentElement.dataset.themeMode = mode;
+        } catch {
+          document.documentElement.dataset.theme = "dark";
+          document.documentElement.dataset.themeMode = "dark";
+        }
+      })();
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/ui/main.tsx"></script>
+  </body>
+</html>

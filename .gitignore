@@ -1,0 +1,41 @@
+dist
+node_modules
+.turbo
+coverage
+*.log
+.npmrc
+*.tgz
+
+# Dependencies
+node_modules/
+
+# Build artifacts and caches
+dist/
+build/
+*.tgz
+.turbo/
+coverage/
+*.log
+
+# Sensitive information
+.npmrc
+.env
+.env.*
+
+# Local/IDE settings
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Project-specific local files
+.serena/cache/
+.serena/project.local.yml
+.playwright-mcp/
+.impeccable/critique/
+.agents/
+
+# Loose screenshots/assets in root
+diffvision-*.png
+
+.npmrc
