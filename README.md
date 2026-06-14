@@ -19,31 +19,31 @@
 </div>
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/this-rafael/diffvision-app/master/docs/screenshots/dashboard.png" alt="DiffVision Dashboard" width="90%" style="border-radius: 10px; border: 1px solid #333;" />
+  <img src="https://github.com/this-rafael/diffvision-app/blob/49b14b6b57589a00341b0b6dff1866d71ac41583/docs/screenshots/dashboard.png?raw=true" alt="DiffVision Dashboard" width="90%" style="border-radius: 10px; border: 1px solid #333;" />
 </p>
 
 ### Theme Selection
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/this-rafael/diffvision-app/master/docs/screenshots/theme-bootstrap.png" alt="DiffVision Theme Selection" width="90%" style="border-radius: 10px; border: 1px solid #333;" />
+  <img src="https://github.com/this-rafael/diffvision-app/blob/49b14b6b57589a00341b0b6dff1866d71ac41583/docs/screenshots/theme-bootstrap.png?raw=true" alt="DiffVision Theme Selection" width="90%" style="border-radius: 10px; border: 1px solid #333;" />
 </p>
 
 ### AI Review Flow
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/this-rafael/diffvision-app/master/docs/screenshots/ai-review-flow.png" alt="DiffVision AI Review Flow" width="90%" style="border-radius: 10px; border: 1px solid #333;" />
+  <img src="https://github.com/this-rafael/diffvision-app/blob/49b14b6b57589a00341b0b6dff1866d71ac41583/docs/screenshots/ai-review-flow.png?raw=true" alt="DiffVision AI Review Flow" width="90%" style="border-radius: 10px; border: 1px solid #333;" />
 </p>
 
 ### Export Panel
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/this-rafael/diffvision-app/master/docs/screenshots/export-panel.png" alt="DiffVision Export Panel" width="90%" style="border-radius: 10px; border: 1px solid #333;" />
+  <img src="https://github.com/this-rafael/diffvision-app/blob/49b14b6b57589a00341b0b6dff1866d71ac41583/docs/screenshots/export-panel.png?raw=true" alt="DiffVision Export Panel" width="90%" style="border-radius: 10px; border: 1px solid #333;" />
 </p>
 
 ### Comment Composer
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/this-rafael/diffvision-app/master/docs/screenshots/comment-details.png" alt="DiffVision Comment Composer" width="90%" style="border-radius: 10px; border: 1px solid #333;" />
+  <img src="https://github.com/this-rafael/diffvision-app/blob/49b14b6b57589a00341b0b6dff1866d71ac41583/docs/screenshots/comment-details.png?raw=true" alt="DiffVision Comment Composer" width="90%" style="border-radius: 10px; border: 1px solid #333;" />
 </p>
 
 ## Key Features
@@ -169,7 +169,7 @@ DiffVision is designed for offline-first review workflows. It stores configurati
 ## Keyboard Shortcuts
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/this-rafael/diffvision-app/master/docs/screenshots/command-palette.png" alt="DiffVision Command Palette" width="90%" style="border-radius: 10px; border: 1px solid #333;" />
+  <img src="https://github.com/this-rafael/diffvision-app/blob/49b14b6b57589a00341b0b6dff1866d71ac41583/docs/screenshots/command-palette.png?raw=true" alt="DiffVision Command Palette" width="90%" style="border-radius: 10px; border: 1px solid #333;" />
 </p>
 
 | Shortcut | Action |
