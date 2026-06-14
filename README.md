@@ -1,159 +1,148 @@
-# DiffVision
+<div align="center">
 
-DiffVision is a local-first Git diff review tool shipped as an npm CLI. It opens your current working tree in a focused browser UI so you can inspect changed files, switch diff modes, search quickly, track review iterations, and export a Markdown review without sending code to a remote service.
+# 🛠️ DiffVision
 
-<p>
-	<img src="./docs/screenshots/dashboard.png" alt="DiffVision dashboard showing the changed file list, repository metrics, and a split diff view" width="100%" />
+**Premium local-first Git diff review tool shipped as a high-performance npm CLI.**
+
+[![npm version](https://img.shields.io/npm/v/diffvision.svg?style=flat-square&color=6366f1)](https://www.npmjs.com/package/diffvision)
+[![npm downloads](https://img.shields.io/npm/dm/diffvision.svg?style=flat-square&color=818cf8)](https://www.npmjs.com/package/diffvision)
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg?style=flat-square&color=a78bfa)](https://opensource.org/licenses/MIT)
+[![Node version](https://img.shields.io/badge/node-%3E%3D20.0.0-60a5fa?style=flat-square&logo=node.js)](https://nodejs.org)
+[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-34d399.svg?style=flat-square)](https://makeapullrequest.com)
+
+[Explore Features](#key-features) • [Installation](#-installation) • [Quick Start](#-quick-start) • [AI Review](#ai-review-flow) • [MCP Server](#-mcp-stdio-server) • [Changelog](./CHANGELOG.md)
+
+---
+
+**DiffVision** transforms your local Git diffs into a rich, interactive experience. It opens your working tree in a focused browser UI, allowing you to inspect changes, track iterations, and export professional Markdown reviews—all without sending a single line of code to the cloud.
+
+</div>
+
+<p align="center">
+  <img src="https://raw.githubusercontent.com/this-rafael/diffvision-app/master/docs/screenshots/dashboard.png" alt="DiffVision Dashboard" width="90%" style="border-radius: 10px; border: 1px solid #333;" />
 </p>
 
-## Why use it
+### Theme Selection
 
-- Review your local Git changes in a dedicated UI instead of a crowded terminal diff.
-- Inspect modified, added, deleted, renamed, untracked, and binary files from one place.
-- Switch between built-in dark and light themes without leaving the review workspace.
-- Switch between split and unified diff layouts while reviewing.
-- Add inline review comments with category and severity metadata.
-- Keep a local review history so each export becomes `v1`, `v2`, `v3`, and so on.
-- Jump through files and actions with a command palette.
-- Export the current draft, selected previous reviews, or the complete review history.
-- Keep the session live while the working tree changes.
+<p align="center">
+  <img src="https://raw.githubusercontent.com/this-rafael/diffvision-app/master/docs/screenshots/theme-bootstrap.png" alt="DiffVision Theme Selection" width="90%" style="border-radius: 10px; border: 1px solid #333;" />
+</p>
 
-## Install
+### AI Review Flow
 
-DiffVision requires Node.js 20+ and Git available on your PATH.
+<p align="center">
+  <img src="https://raw.githubusercontent.com/this-rafael/diffvision-app/master/docs/screenshots/ai-review-flow.png" alt="DiffVision AI Review Flow" width="90%" style="border-radius: 10px; border: 1px solid #333;" />
+</p>
 
+### Export Panel
+
+<p align="center">
+  <img src="https://raw.githubusercontent.com/this-rafael/diffvision-app/master/docs/screenshots/export-panel.png" alt="DiffVision Export Panel" width="90%" style="border-radius: 10px; border: 1px solid #333;" />
+</p>
+
+### Comment Composer
+
+<p align="center">
+  <img src="https://raw.githubusercontent.com/this-rafael/diffvision-app/master/docs/screenshots/comment-details.png" alt="DiffVision Comment Composer" width="90%" style="border-radius: 10px; border: 1px solid #333;" />
+</p>
+
+## Key Features
+
+- **Local-First & Private**: Your code never leaves your machine. Full offline capability.
+- **6 Premium Themes**: Choose from Dark, Dracula, Lust, OneLight, MinTheme, and PaperColor. Each theme drives both page chrome and syntax highlighting.
+- **Split & Unified Diffs**: Toggle between side-by-side and unified diff layouts with fullscreen support.
+- **Interactive Comments**: Add inline review comments with categories (Bug, Refactor, Performance, Security, Readability, Suggestion) and severity levels (info, minor, major, critical).
+- **AI Review Flow**: Built-in 6-step wizard to configure AI agents (GitHub Copilot CLI, Qwen Code, Gemini CLI, Claude Code), draft review guides, categorize rules, and run mocked reviews.
+- **Iteration Tracking**: Keep a local history of your reviews (`v1`, `v2`, `v3`) automatically with a visual timeline.
+- **Command Palette**: Fast navigation and actions via `Ctrl/Cmd + K`. Search files, comments, bookmarks and commands.
+- **File Bookmarks & Filters**: Bookmark important files and filter by all, modified, added, untracked, staged, unstaged, or bookmarked.
+- **Line Selection**: Click to select a line, Shift-click to extend the selection range.
+- **Local Export**: Generate polished Markdown reports or JSON exports into `.diffvision/`.
+- **MCP Server**: Ships with a built-in Model Context Protocol server for integration with AI coding agents.
+- **High Performance**: Powered by Fastify and React for a near-instant review experience.
+
+---
+
+## 🚀 Installation
+
+Install DiffVision globally or run it on-the-fly using your favorite package manager.
+
+### Global Install
 ```bash
 npm install -g diffvision
+# or
+pnpm add -g diffvision
 ```
 
-You can also run it without a global install:
-
+### Run without install
 ```bash
 npx diffvision
+# or
 pnpm dlx diffvision
+# or
 bunx diffvision
 ```
 
-The package also ships `diffvision-mcp`, a local MCP stdio server for AI agents.
+---
 
-## Changelog
+## 🏁 Quick Start
 
-Versioned release notes live in [CHANGELOG.md](./CHANGELOG.md). The published npm package now includes both the README and changelog so users can inspect release history from the installed tarball.
-
-## Quick start
-
-Run DiffVision inside any Git repository:
+Just run `diffvision` inside any Git repository:
 
 ```bash
 diffvision
 ```
 
-DiffVision will:
-
-1. Detect the nearest Git repository.
-2. Load the current working tree diff against `HEAD` by default.
-3. Start a local Fastify server.
-4. Open the embedded web UI in your browser unless disabled.
-
-If you want to inspect another repository or compare against a different base ref:
+### Advanced Usage
 
 ```bash
-diffvision --cwd /path/to/repository
-diffvision --compare main
-diffvision --new-in origin/develop --relative-to main
-```
-
-## What the UI gives you
-
-- Repository overview with branch, changed file count, additions, deletions, and tree status.
-- Persistent theme picker with editor-inspired dark and light palettes that keep chrome, overlays, and syntax highlighting in sync.
-- Editable comparison base so you can switch from `HEAD` to `main`, `origin/main`, a tag, or a commit.
-- Optional ref-to-ref mode that shows what is new in one ref relative to another.
-- File list with quick filtering and per-file change counts.
-- Split and unified diff modes for the active file.
-- Inline comments per line with category (`bug`, `security`, `performance`, etc.) and severity (`info` to `critical`).
-- Review history panel so you can inspect `v1`, `v2`, `v3`, or a combined `General` timeline.
-- One-click copy of the raw patch for the active file.
-- Command palette for fast navigation and common actions.
-- Local export flow for the current review, selected previous reviews, or the full review history.
-- Live repository refresh through a local WebSocket channel.
-
-### Command palette
-
-<p>
-	<img src="./docs/screenshots/command-palette.png" alt="DiffVision command palette showing actions and file search" width="100%" />
-</p>
-
-Use `Ctrl/Cmd + K` to search files or trigger built-in actions (refresh, toggle diff mode, open export).
-
-### Local export
-
-<p>
-	<img src="./docs/screenshots/export-panel.png" alt="DiffVision export panel writing a local Markdown review report" width="100%" />
-</p>
-
-Use `Ctrl/Cmd + E` to open the export panel and write a Markdown review into `.diffvision/exports`, copy minified review JSON, or re-export previous iterations. Exporting the current draft archives it as the next review version and opens a fresh empty draft automatically.
-
-## Keyboard shortcuts
-
-| Shortcut       | Action                      |
-| -------------- | --------------------------- |
-| `Ctrl/Cmd + K` | Open command palette        |
-| `Ctrl/Cmd + E` | Open export panel           |
-| `Ctrl/Cmd + R` | Refresh repository snapshot |
-| `Esc`          | Close palette/export panel  |
-
-## CLI options
-
-| Option                | Description                                                |
-| --------------------- | ---------------------------------------------------------- |
-| `--host <host>`       | Host to bind the local server.                             |
-| `--port <port>`       | Preferred port for the local server.                       |
-| `--compare <ref>`     | Legacy alias for `--base <ref>`.                           |
-| `--new-in <ref>`      | Show what is new in this ref.                              |
-| `--relative-to <ref>` | Compare the `--new-in` ref relative to this ref.           |
-| `--base <ref>`        | Legacy alias for `--new-in <ref>`.                         |
-| `--target <ref>`      | Legacy alias for `--relative-to <ref>`.                    |
-| `--open`              | Force browser launch.                                      |
-| `--no-open`           | Disable automatic browser launch.                          |
-| `--cwd <path>`        | Inspect a repository different from the current directory. |
-| `--ui-origin <url>`   | Development-only UI origin override.                       |
-| `--logs <mode>`       | Enable terminal logging. Use `all` for full internal logs. |
-| `--version`           | Print the installed DiffVision version and exit.           |
-| `--help`              | Show CLI help.                                             |
-
-Examples:
-
-```bash
+# Compare current changes relative to 'main'
 diffvision main
-diffvision --host 127.0.0.1 --port 3210
-diffvision --compare origin/main
-diffvision --new-in origin/develop --relative-to main
-diffvision --no-open
-diffvision --cwd /path/to/repository
-diffvision --version
-diffvision --logs all
+
+# Specify a different directory
+diffvision --cwd /path/to/repo
+
+# View what is new in 'feature-branch' relative to 'develop'
+diffvision --new-in feature-branch --relative-to develop
 ```
 
-`diffvision main` is shorthand for “show everything new in the current branch relative to `main`”. Internally it behaves like `diffvision --relative-to main`, keeping `HEAD` as the ref being reviewed.
+---
 
-## MCP stdio server
+## ⚙️ How it Works
 
-`diffvision-mcp` exposes the active DiffVision review session over MCP stdio so an AI client can inspect the current diff and write inline comments straight into the active review draft stored in `.diffvision/comments.json`.
+DiffVision is designed for offline-first review workflows. It stores configuration and generated exports inside your repository:
 
-```bash
-diffvision-mcp --cwd /path/to/repository
-```
+- `<repo-root>/.diffvision/config.json`: Local UI preferences.
+- `<repo-root>/.diffvision/comments.json`: Active review draft.
+- `<repo-root>/.diffvision/exports/*.md`: Your archived review reports.
 
-### Configure `mcp.json` for this project
+---
 
-If you want to use DiffVision MCP from VS Code, install the published package first:
+## 🛠️ Tech Stack
 
-```bash
-npm install -g diffvision
-```
+<div align="center">
 
-Then create `.vscode/mcp.json` and point the server command at the published bin:
+| Component | Technology |
+| :--- | :--- |
+| **Frontend** | [React](https://reactjs.org/) + [Vite](https://vitejs.dev/) + [TailwindCSS](https://tailwindcss.com/) |
+| **Icons** | [Lucide React](https://lucide.dev/) |
+| **Server** | [Fastify](https://www.fastify.io/) + [WebSockets](https://github.com/fastify/fastify-websocket) |
+| **Language** | [TypeScript](https://www.typescriptlang.org/) |
+| **Syntax Highlighting** | [PrismJS](https://prismjs.com/) |
+| **Agent Protocol** | [Model Context Protocol (MCP)](https://modelcontextprotocol.io/) |
+
+</div>
+
+---
+
+## 🤖 MCP Stdio Server
+
+`diffvision-mcp` bridges the gap between your local review session and AI agents. It allows AI clients to inspect diffs and write comments directly into your active draft.
+
+<details>
+<summary><b>📖 Click to see MCP Configuration</b></summary>
+
+### VS Code Configuration (`mcp.json`)
 
 ```json
 {
@@ -167,108 +156,91 @@ Then create `.vscode/mcp.json` and point the server command at the published bin
 }
 ```
 
-This is the recommended setup for VS Code MCP with the published package: install `diffvision` once, then invoke the `diffvision-mcp` bin directly from `mcp.json`.
+### Available Tools
+- `get_repo_overview`: Metadata and file list.
+- `read_diff`: Raw patch + existing comments.
+- `list_review_comments`: History and draft comments.
+- `create_review_comment`: Append new comments from the agent.
 
-You do not need to hardcode `--relative-to main` in `mcp.json`. If you want the AI to choose the review context on each MCP call, leave comparison flags out of the startup config and pass them in the tool input.
+</details>
 
-Example tool inputs when the AI wants to choose a specific diff view for that call:
+---
 
-```json
-{
-  "newIn": "HEAD",
-  "relativeTo": "main"
-}
-```
+## Keyboard Shortcuts
 
-```json
-{
-  "filePath": "src/ui/App.tsx",
-  "newIn": "feature/review-pass",
-  "relativeTo": "develop"
-}
-```
+<p align="center">
+  <img src="https://raw.githubusercontent.com/this-rafael/diffvision-app/master/docs/screenshots/command-palette.png" alt="DiffVision Command Palette" width="90%" style="border-radius: 10px; border: 1px solid #333;" />
+</p>
 
-`get_repo_overview`, `read_diff`, and `create_review_comment` now accept these optional `newIn` and `relativeTo` fields. If omitted, DiffVision MCP falls back to the startup flags or the saved `.diffvision/config.json` values.
+| Shortcut | Action |
+| :--- | :--- |
+| `Ctrl/Cmd + K` | Open command palette |
+| `Ctrl/Cmd + E` | Open export panel |
+| `Ctrl/Cmd + P` | Find file |
+| `Ctrl/Cmd + R` | Refresh repository snapshot |
+| `Ctrl/Cmd + Enter` | Save comment |
+| `Esc` | Close palette/export panel/comment composer |
+| `Shift + Click` | Extend line selection range |
 
-Notes:
+---
 
-- Use workspace configuration when you want the MCP server to run against this repository and share the setup with the team.
-- If you want one fixed comparison for every MCP session, you can still add startup flags like `--relative-to main` or `--new-in origin/develop` to `mcp.json`.
-- `--cwd ${workspaceFolder}` ensures the MCP server reads `.diffvision/config.json` and `.diffvision/comments.json` from the current repository.
-- Add `--author <name>` to the `args` list if you want a custom author label on comments created by the AI.
-- Per-call `relativeTo: ""` clears a default base ref for that one tool call and falls back to a direct review of `newIn` versus `HEAD`.
-- `--logs all` is optional for debugging and is safe because DiffVision MCP writes logs to `stderr`, not MCP `stdout`.
-- After saving `mcp.json`, restart the server from VS Code with `MCP: List Servers` if it does not restart automatically.
+## 📑 CLI Reference
 
-Available MCP tools:
+<details>
+<summary><b>🔍 Click to expand CLI Options</b></summary>
 
-- `get_repo_overview` for repository metadata, changed files, and active review status.
-- `read_diff` for the raw patch of a changed file plus any existing comments already stored for that file.
-- `list_review_comments` for the current review history, optionally filtered by file or review id.
-- `create_review_comment` to append a new inline comment into the active DiffVision draft.
+| Option | Description |
+| :--- | :--- |
+| `--host <host>` | Host to bind the local server. |
+| `--port <port>` | Preferred port for the local server. |
+| `--compare <ref>` | Base ref (legacy alias for --base). |
+| `--new-in <ref>` | Show what is new in this ref. |
+| `--relative-to <ref>` | Compare the `--new-in` ref relative to this ref. |
+| `--base <ref>` | Legacy alias for --new-in. |
+| `--target <ref>` | Legacy alias for --relative-to. |
+| `--open` | Force browser launch. |
+| `--no-open` | Disable automatic browser launch. |
+| `--cwd <path>` | Inspect a repository different from the current directory. |
+| `--ui-origin <url>` | Development UI origin override. |
+| `--logs <mode>` | Enable terminal logging (`all` for full logs). |
+| `--version` | Print the installed version. |
+| `--help` | Show CLI help. |
 
-Useful flags:
+</details>
 
-- `--author <name>` changes the author label written into MCP-created comments.
-- `--compare <ref>`, `--new-in <ref>`, and `--relative-to <ref>` mirror the main DiffVision comparison flags.
-- `--logs all` sends internal logs to `stderr` so the MCP `stdout` channel stays protocol-safe.
+---
 
-## Local-only by default
-
-DiffVision is designed for offline-first review workflows.
-
-- Your repository stays on your machine.
-- Review reports are written into the repository under `.diffvision`.
-- No account, cloud sync, or external review service is required.
-
-## Files written by DiffVision
-
-DiffVision stores optional configuration and generated exports inside the target repository:
-
-```txt
-<repo-root>/.diffvision/config.json
-<repo-root>/.diffvision/comments.json
-<repo-root>/.diffvision/exports/*.md
-```
-
-Example configuration:
-
-```json
-{
-  "theme": "dark",
-  "openBrowser": true,
-  "defaultView": "side-by-side",
-  "port": 3210,
-  "host": "127.0.0.1",
-  "compareRef": "HEAD",
-  "compareTargetRef": "main"
-}
-```
-
-## Typical workflow
-
-1. Start DiffVision in a repository you are actively editing.
-2. Review the changed file list and inspect the highest-risk patches first.
-3. Switch between split and unified views depending on the change shape.
-4. Export the current review when ready; DiffVision archives it as `v1`, `v2`, `v3`, and opens the next draft automatically.
-
-## Development
+## 🏗️ Development
 
 ```bash
+# Install dependencies
 pnpm install
+
+# Start UI and Server in dev mode
 pnpm dev
+
+# Build for production
 pnpm build
-pnpm lint
+
+# Run tests
 pnpm test
-pnpm release
 ```
 
-## Release checklist
+---
 
-```bash
-pnpm build
-pnpm test
-npm publish
-```
+## 🤝 Contributing
 
-Before publishing, update `README.md`, append the new entry to `CHANGELOG.md`, and bump the version in `package.json`.
+
+Contributions are welcome! Please feel free to submit a Pull Request.
+
+1. Fork the Project
+2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the Branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
+
+---
+
+<div align="center">
+  <sub>Built with ❤️ by the DiffVision Team</sub>
+</div>
